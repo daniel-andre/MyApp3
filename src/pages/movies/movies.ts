@@ -18,7 +18,7 @@ import { MovieProvider } from '../../providers/movie/movie';
   ]
 })
 export class MoviesPage {
-
+  public lista_filmes = Array<any>();
   constructor(public navCtrl: NavController, public navParams: NavParams, public movieProvider: MovieProvider) {
   }
 
@@ -27,6 +27,7 @@ export class MoviesPage {
       data => {
         const response = (data as any);
         const objeto_retorno = JSON.parse(response._body);
+        this.lista_filmes = objeto_retorno.results;
         console.log(objeto_retorno);
       }, error => {
         console.log(error);
